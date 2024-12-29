@@ -29,8 +29,8 @@ public class LIFO<T> implements ILIFO<T> {
         if (isEmpty())
             return null;
 
-        T e = this.head.data;
-        this.head = this.head.next;//Lấy phần tử cuối cùng của stack
+        T e = this.head.data;//Gán giá trị hiện tại của head cho biến tam
+        this.head = this.head.next;//Di chuyển head sang node tiếp theo
         this.size--;
 
         return e;
@@ -46,8 +46,10 @@ public class LIFO<T> implements ILIFO<T> {
             this.size++;
         } else {
             // nếu stack không rỗng
+            // Trỏ giá trị node tới head
             node.next = this.head;
-            this.head = node;
+            this.head = node;//gán giá trị head = node
+            //tăng kích thước của stack
             this.size++;
         }
     }
@@ -64,7 +66,7 @@ public class LIFO<T> implements ILIFO<T> {
             return;
         }
         // Hiển thị các phần tử đang có trong stack
-        Node<T> current = this.head;
+        Node<T> current = this.head;//gán giá trị hiện tại của head cho biến tạm
         while (current != null) {
             System.out.println(current.data + "");
             current = current.next;//Dò lần lượt các phần tử có trong stack

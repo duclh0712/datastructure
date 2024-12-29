@@ -20,12 +20,13 @@ public class FIFO<T> implements IFIFO<T> {
         Node<T> newNode = new Node<>(element);
         
         // Nếu queue rỗng
-        if (head == null) {
-            head = newNode;
+        if (this.head == null) {
+            //gán giá trị mới cho head
+            this.head = newNode;
         } else {
-            // Tìm node cuối cùng
-            Node<T> current = this.head;
+            Node<T> current = this.head;//gán giá trị hiện tại của head cho biến tạm
             while (current.next != null) {
+                // Tìm node cuối cùng
                 current = current.next;
             }
             // Thêm node mới vào cuối
@@ -37,6 +38,7 @@ public class FIFO<T> implements IFIFO<T> {
     @Override
     public T peek() {
         if (isEmpty()) {
+            System.out.println("Stack rỗng");
             return null;
         }
         return this.head.data;
@@ -71,11 +73,11 @@ public class FIFO<T> implements IFIFO<T> {
 
     @Override
     public void display() {
-        // Hiển thị các phần tử đang có trong queue
-
+        
         Node<T> current = this.head;
-
+        
         while (current != null) {
+            // Hiển thị các phần tử đang có trong queue
             System.out.println(current.data + " ");
             current = current.next;
         }
